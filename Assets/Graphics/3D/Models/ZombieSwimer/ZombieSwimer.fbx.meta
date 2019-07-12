@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 1f27a3f5ecb3a9c4487928574c65bc5d
+guid: defa309a5de1ab74e94626f39d22c5b4
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Swimwear
+    second: {fileID: 2100000, guid: 34340fae70dc1f84d86a5602111da9a0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -80,7 +85,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 10
+    globalScale: 0.099999994
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
