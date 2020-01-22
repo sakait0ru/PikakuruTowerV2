@@ -1,18 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SceneMove : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // ステージ遷移用
+    public void StageMove(string StageLevel)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneManager.LoadScene(StageLevel);
     }
 }
