@@ -13,10 +13,16 @@ public class EnemyController : MonoBehaviour
     private Transform m_target;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(!m_target)
+        {
+            m_target = GameObject.Find("Tower").transform;
+        }
+
+        GameManeger.Instance.AddEnemyCount();
     }
 
     // Update is called once per frame
@@ -24,15 +30,24 @@ public class EnemyController : MonoBehaviour
     {
 
         // 移動
-        m_velocity += (m_target.position - transform.position);
-        m_velocity *= 0.25f;
-        m_velocity.y = 0;
-        transform.position += m_velocity *= Time.deltaTime;
+        m_velocity = (m_target.position - transform.position);
+        var vec = m_velocity.normalized;
+        vec.y = 0;
+        transform.position += vec *= Time.deltaTime;
 
         // 向き
         var aim = m_target.position - this.transform.position;
         aim.y = 0.0f;
         var look = Quaternion.LookRotation(aim);
         this.transform.localRotation = look;
+    }
+
+    // タワーに触れたらゲームオーバー
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Tower")
+        {
+            GameManeger.Instance.ResetGame();
+        }
     }
 }

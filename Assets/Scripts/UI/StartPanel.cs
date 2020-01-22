@@ -21,10 +21,14 @@ public class StartPanel : MonoBehaviour
         // Aボタンを押した時にする
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            Destroy(this.gameObject);
-
             // ジャイロの角度保存
             //gyroCon.
+
+            // gameをスタートさせる
+            GameManeger.Instance.StartGame();
+
+            // このコンポーネントを消す
+            Destroy(GetComponent<StartPanel>());
         }
     }
 }

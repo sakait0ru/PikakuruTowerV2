@@ -25,6 +25,7 @@ public class EnemyHp : MonoBehaviour
         enemyHP--;
         if(enemyHP <= 0)
         {
+            GameManeger.Instance.DeathEnemyCount();
             Destroy(this.gameObject);
         }
     }
