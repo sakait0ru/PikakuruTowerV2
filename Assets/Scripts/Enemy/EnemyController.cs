@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
 
         // 向き
         var aim = m_target.position - this.transform.position;
+        aim.y = 0.0f;
         var look = Quaternion.LookRotation(aim);
         this.transform.localRotation = look;
     }

@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGenerator : MonoBehaviour
+public class GameManeger : MonoBehaviour
 {
-    // 動かすオブジェクト
-    public GameObject[] controllers = new GameObject[2];
-    
     // Start is called before the first frame update
     void Start()
     {
