@@ -21,7 +21,10 @@ public class GameManeger : MonoSingleton<GameManeger>
     public void StartGame()
     {
         stared = true;
+        // 世界を暗くする
         directionalLight.intensity = 0.5f;
+        // Fogを暗くする
+        // スタートスプライト退場
         Destroy(startImages);
     }
 

@@ -6,29 +6,42 @@ public class StartPanel : MonoBehaviour
 {
     public GyroController gyroCon;
 
+    public GameObject cameraObject;
+
     void Start()
     {
         if (!gyroCon)
         {
-            //何も設定さていなかった時は取得
             gyroCon = GameObject.Find("CameraController").GetComponent<GyroController>();
+        }
 
+        if (!cameraObject)
+        {
+            cameraObject = GameObject.Find("Dive_Camera");
         }
     }
 
     void Update()
     {
-        // Aボタンを押した時にする
-        if(Input.GetKeyDown(KeyCode.Q))
+        var cameraRot = cameraObject.transform.rotation;
+        Vector3 rot = cameraRot.eulerAngles;
+        if (rot.x <= 20 && rot.x >= -20 &&
+            rot.y <= 20 && rot.y >= -20)
         {
-            // ジャイロの角度保存
-            //gyroCon.
+            //Debug.Log("aaa");
 
-            // gameをスタートさせる
-            GameManeger.Instance.StartGame();
+            // Aボタンを押した時にする
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                // ジャイロの角度保存
+                //gyroCon.
 
-            // このコンポーネントを消す
-            Destroy(GetComponent<StartPanel>());
+                // gameをスタートさせる
+                GameManeger.Instance.StartGame();
+
+                // このコンポーネントを消す
+                Destroy(GetComponent<StartPanel>());
+            }
         }
     }
 }
