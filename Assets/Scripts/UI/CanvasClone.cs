@@ -16,7 +16,5 @@ public class CanvasClone : MonoBehaviour
         GameObject rCanvas = Instantiate(canvas);
         Canvas canvasData = rCanvas.GetComponent<Canvas>();
         canvasData.worldCamera = tagetCamera;
-
-        GameManeger.Instance.startImage[1] = rCanvas.transform.GetChild(0).gameObject;
     }
 }

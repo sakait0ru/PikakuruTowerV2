@@ -8,18 +8,21 @@ public class GameManeger : MonoSingleton<GameManeger>
     // このゲームが始まっているか
     bool stared = false;
     // スタートボタンが押されると消えるスプライト
-    public GameObject[] startImage = new GameObject[2];
+    public GameObject startImages;
 
-    // 敵の数
     [SerializeField]
+    public Light directionalLight;
+
+   // 敵の数
+   [SerializeField]
     int enemyCount = 0;
+
 
     public void StartGame()
     {
         stared = true;
-
-        Destroy(startImage[0]);
-        Destroy(startImage[1]);
+        directionalLight.intensity = 0.5f;
+        Destroy(startImages);
     }
 
     public void SetStared(bool b)
