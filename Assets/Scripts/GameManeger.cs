@@ -24,6 +24,7 @@ public class GameManeger : MonoSingleton<GameManeger>
         // 世界を暗くする
         directionalLight.intensity = 0.5f;
         // Fogを暗くする
+        RenderSettings.fogColor = Color.black;
         // スタートスプライト退場
         Destroy(startImages);
     }
