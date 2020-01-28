@@ -3746,7 +3746,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startImages: {fileID: 1741955422}
-  directionalLight: {fileID: 1844977766}
   enemyCount: 0
 --- !u!4 &1176066100
 Transform:
@@ -3776,6 +3775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gyroCon: {fileID: 0}
   cameraObject: {fileID: 0}
+  directionalLight: {fileID: 1844977766}
 --- !u!1001 &1176417939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3893,7 +3893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5610541
+      value: 0.4304541
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3901,7 +3901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8277792
+      value: 0.90261257
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 3}
       propertyPath: m_RootOrder
@@ -3913,7 +3913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -68.257
+      value: 50.993004
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

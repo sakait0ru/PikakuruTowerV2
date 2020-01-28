@@ -7,11 +7,8 @@ public class GameManeger : MonoSingleton<GameManeger>
 {
     // このゲームが始まっているか
     bool stared = false;
-    // スタートボタンが押されると消えるスプライト
-    public GameObject startImages;
 
-    [SerializeField]
-    public Light directionalLight;
+
 
    // 敵の数
    [SerializeField]
@@ -21,12 +18,6 @@ public class GameManeger : MonoSingleton<GameManeger>
     public void StartGame()
     {
         stared = true;
-        // 世界を暗くする
-        directionalLight.intensity = 0.5f;
-        // Fogを暗くする
-        RenderSettings.fogColor = Color.black;
-        // スタートスプライト退場
-        Destroy(startImages);
     }
 
     public void SetStared(bool b)
