@@ -84,6 +84,7 @@ public class StartPanel : MonoBehaviour
                 GameManeger.Instance.StartGame();
                 // BGM 再生
 
+
                 Destroy(startObject);
                 // このコンポーネントを消す
                 Destroy(GetComponent<StartPanel>());

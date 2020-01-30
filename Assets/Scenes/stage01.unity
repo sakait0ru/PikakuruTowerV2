@@ -230,9 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d396bcb8480c24eb784eebe6096a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectAsset: {fileID: 11400000, guid: 2e53747ba24c89d41a01fcfe318ae9f5, type: 2}
+  effectAsset: {fileID: 11400000, guid: 23f705263927b4d4da1f62c82ff56ac1, type: 2}
   playOnStart: 1
-  isLooping: 0
+  isLooping: 1
 --- !u!4 &23508403
 Transform:
   m_ObjectHideFlags: 0
@@ -241,7 +241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23508401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.56, y: 0.89, z: -1.67}
+  m_LocalPosition: {x: -9.04, y: 0, z: -3.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1595,6 +1595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 474681187}
+  - component: {fileID: 474681188}
   m_Layer: 0
   m_Name: EnemyPoint_0
   m_TagString: Untagged
@@ -1610,12 +1611,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474681186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.03, z: 20.07}
+  m_LocalPosition: {x: 0, y: 0.03, z: 13.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2043805742}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &474681188
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474681186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &477102539
 GameObject:
   m_ObjectHideFlags: 0

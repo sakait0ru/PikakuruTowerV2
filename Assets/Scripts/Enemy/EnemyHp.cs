@@ -39,7 +39,10 @@ public class EnemyHp : MonoBehaviour
     // ダメージ
     public void Damege()
     {
-        enemyHP--;
+        if (GetComponent<EnemyController>().m_isSpawn)
+        {
+            enemyHP--;
+        }
         if(enemyHP <= 0)
         {
             GameManeger.Instance.DeathEnemyCount();

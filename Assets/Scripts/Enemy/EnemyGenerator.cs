@@ -49,7 +49,7 @@ public class EnemyGenerator : MonoBehaviour
 
     private void CreateEnemy()
     {
-        const float range = 25;
+        const float range = 10;
 
         // 生成する位置からある程度ランダムにする
         float randomX = (Random.value * range) - (range / 2);
@@ -59,7 +59,7 @@ public class EnemyGenerator : MonoBehaviour
         selectPointPos.x += randomX;
         selectPointPos.z += randomZ;
         selectPointPos.y = 0.03f;
-
+        // 生成
         Instantiate(enemyObject, selectPointPos, Quaternion.identity);
     }
 }
