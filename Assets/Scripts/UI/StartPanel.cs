@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class StartPanel : MonoBehaviour
 {
-    // スタートの条件用
-    public GameObject cameraObject;
-
     private bool isStartButtonPush = false;
 
     // ゲームが始まるまでの秒数
@@ -20,14 +17,12 @@ public class StartPanel : MonoBehaviour
     // スタートボタンが押されると消えるスプライト
     public GameObject startImages;
     private SpriteRenderer[] images;
+    // スタートがはじまると消えるオブジェクトの親
+    public GameObject startObject;
 
+    public StartSlider startslider;
     void Start()
     {
-        if (!cameraObject)
-        {
-            cameraObject = GameObject.Find("Dive_Camera");
-        }
-
         images = new SpriteRenderer[startImages.transform.childCount];
         for (int i = 0; i < startImages.transform.childCount; i++)
         {
@@ -41,17 +36,14 @@ public class StartPanel : MonoBehaviour
 
     void Update()
     {
-        var cameraRot = cameraObject.transform.rotation;
-        Vector3 rot = cameraRot.eulerAngles;
-        //if ((rot.y <= 50.0f) && (rot.y >= -50.0f))
-        //{
 
-            // Aボタンを押した時にする
-            if (Input.GetKeyDown(KeyCode.Q) && !isStartButtonPush)
-            {
-                isStartButtonPush = true;
-            }
-        //}
+        // Aボタンを押した時にする
+        // スライダーが1以上になったとき
+        if (startslider.isStart && !isStartButtonPush)
+        {
+            isStartButtonPush = true;
+            Destroy(startObject);
+        }
 
         // ゲームが始まっている時
         if (isStartButtonPush)
@@ -90,17 +82,15 @@ public class StartPanel : MonoBehaviour
             {
                 // gameをスタートさせる
                 GameManeger.Instance.StartGame();
+                // BGM 再生
 
+                Destroy(startObject);
                 // このコンポーネントを消す
                 Destroy(GetComponent<StartPanel>());
             }
 
 
         }
-        // 何秒で始まるか
-        // 
-
-        // 全部終わったらこのコーポネントを削除する。
 
 
     }
