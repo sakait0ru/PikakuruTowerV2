@@ -35,6 +35,13 @@ public class EnemyController : MonoBehaviour
         var meshPos = m_mesh.transform.position;
         meshPos.y = -1;
         m_mesh.transform.position = meshPos;
+
+        // ターゲットの方向を向く
+        var aim = m_target.position - this.transform.position;
+        aim.y = 0.0f;
+        var look = Quaternion.LookRotation(aim);
+        this.transform.localRotation = look;
+
     }
 
     // Update is called once per frame

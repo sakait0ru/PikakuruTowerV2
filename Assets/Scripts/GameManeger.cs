@@ -5,15 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManeger : MonoSingleton<GameManeger>
 {
+    public bool isCameraVR = false;
+
     // このゲームが始まっているか
     bool stared = false;
-
-
 
    // 敵の数
    [SerializeField]
     int enemyCount = 0;
 
+    public bool enemyFix = false;
 
     public void StartGame()
     {
@@ -56,7 +57,7 @@ public class GameManeger : MonoSingleton<GameManeger>
         // ゲームオーバいらない説あるな
 
         // 壁に張り付く、攻撃　赤くなる　10体出てくる　全部でてくるとボス　ボス倒してClear
-        SceneManager.LoadScene("stage01");
+        //SceneManager.LoadScene("stage01");
     }
 
     // ゲームクリアの処理
@@ -64,9 +65,21 @@ public class GameManeger : MonoSingleton<GameManeger>
     {
         // 明るくする
 
+        Destroy(GameObject.Find("MainBGM"));
+
         // スプライト出す
-        
+        GetComponent<EndPanel>().enabled = true;
         // 
+
+
     }
+
+    //ボスを出す
+    public void BossCreate()
+    {
+        // スクリプト有効化　（全体を赤くして、かつスプライト点滅　その後　ボス生成）
+        GetComponent<BossCreate>().enabled = true;
+    }
+
 
 }
