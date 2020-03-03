@@ -21,6 +21,8 @@ public class StartPanel : MonoBehaviour
     public GameObject startObject;
 
     public StartSlider startslider;
+
+    public GameObject mainBGM;
     void Start()
     {
         images = new SpriteRenderer[startImages.transform.childCount];
@@ -42,6 +44,7 @@ public class StartPanel : MonoBehaviour
         if (startslider.isStart && !isStartButtonPush)
         {
             isStartButtonPush = true;
+            mainBGM.SetActive(true);
             Destroy(startObject);
         }
 
@@ -83,7 +86,7 @@ public class StartPanel : MonoBehaviour
                 // gameをスタートさせる
                 GameManeger.Instance.StartGame();
                 // BGM 再生
-
+                startImages.SetActive(false);
 
                 Destroy(startObject);
                 // このコンポーネントを消す
