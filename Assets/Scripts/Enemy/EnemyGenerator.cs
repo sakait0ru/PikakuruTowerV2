@@ -20,6 +20,10 @@ public class EnemyGenerator : MonoBehaviour
     public int EnemyMax = 10;
     private int EnemyNow = 0;
 
+    public int EnemyCount = 0;
+    public bool EnemyFix = false;
+
+    public int createsuu = 10;
     void Start()
     {
         
@@ -27,8 +31,8 @@ public class EnemyGenerator : MonoBehaviour
 
     void Update()
     {
-        // ゲームがスタートしていて　かつ　敵の数が１００より少ない時
-        if (GameManeger.Instance.GetStared() && GameManeger.Instance.GetEnemyCount() < 100)
+        // ゲームがスタートしていて　かつ　1より少ない時
+        if (GameManeger.Instance.GetStared() && !EnemyFix)
         {
             time += Time.deltaTime;
 
@@ -41,7 +45,7 @@ public class EnemyGenerator : MonoBehaviour
 
                 if(createTime > 0.3f)
                 {
-                    createTime -= 0.2f;
+                    createTime -= 0.4f;
                 }
             }
         }
@@ -49,7 +53,7 @@ public class EnemyGenerator : MonoBehaviour
 
     private void CreateEnemy()
     {
-        const float range = 25;
+        const float range = 10;
 
         // 生成する位置からある程度ランダムにする
         float randomX = (Random.value * range) - (range / 2);
@@ -59,7 +63,27 @@ public class EnemyGenerator : MonoBehaviour
         selectPointPos.x += randomX;
         selectPointPos.z += randomZ;
         selectPointPos.y = 0.03f;
+        // 生成
+        var ene = Instantiate(enemyObject, selectPointPos, Quaternion.identity);
 
-        Instantiate(enemyObject, selectPointPos, Quaternion.identity);
+        EnemyCount++;
+
+        if (EnemyCount > createsuu)
+        {
+            ene.GetComponent<AudioSource>().Stop();
+        }
+
+        if (EnemyCount == createsuu)
+        {
+            CreateEnemy();
+            CreateEnemy();
+            CreateEnemy();
+            CreateEnemy();
+            CreateEnemy();
+
+            // 敵を出し終えた
+            EnemyFix = true;
+            GameManeger.Instance.enemyFix = true;
+        }
     }
 }

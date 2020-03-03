@@ -1,47 +1,101 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartPanel : MonoBehaviour
 {
-    public GyroController gyroCon;
+    private bool isStartButtonPush = false;
 
-    public GameObject cameraObject;
+    // ゲームが始まるまでの秒数
+    private float startTime = 3;
+    // スタート押してからの時間
+    private float time = 0;
 
+    [SerializeField]
+    public Light directionalLight;
+    // スタートボタンが押されると消えるスプライト
+    public GameObject startImages;
+    private SpriteRenderer[] images;
+    // スタートがはじまると消えるオブジェクトの親
+    public GameObject startObject;
+
+    public StartSlider startslider;
+
+    public GameObject mainBGM;
     void Start()
     {
-        if (!gyroCon)
+        images = new SpriteRenderer[startImages.transform.childCount];
+        for (int i = 0; i < startImages.transform.childCount; i++)
         {
-            gyroCon = GameObject.Find("CameraController").GetComponent<GyroController>();
-        }
-
-        if (!cameraObject)
-        {
-            cameraObject = GameObject.Find("Dive_Camera");
+            SpriteRenderer imgObj = startImages.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
+            if (imgObj)
+            {
+                images[i] = imgObj;
+            }
         }
     }
 
     void Update()
     {
-        var cameraRot = cameraObject.transform.rotation;
-        Vector3 rot = cameraRot.eulerAngles;
-        if (rot.x <= 20 && rot.x >= -20 &&
-            rot.y <= 20 && rot.y >= -20)
+
+        // Aボタンを押した時にする
+        // スライダーが1以上になったとき
+        if (startslider.isStart && !isStartButtonPush)
         {
-            //Debug.Log("aaa");
+            isStartButtonPush = true;
+            mainBGM.SetActive(true);
+            Destroy(startObject);
+        }
 
-            // Aボタンを押した時にする
-            if (Input.GetKeyDown(KeyCode.Q))
+        // ゲームが始まっている時
+        if (isStartButtonPush)
+        {
+            if (time < startTime)
             {
-                // ジャイロの角度保存
-                //gyroCon.
+                float ratio = time / startTime;
 
+                // ライトを暗くする
+                directionalLight.intensity = 1.0f - (0.5f * ratio);
+
+                // fogを黒くする
+                Color newCol = Color.white;
+                newCol.r -= ratio;
+                newCol.g -= ratio;
+                newCol.b -= ratio;
+
+                RenderSettings.fogColor = newCol;
+
+                Material m = new Material(RenderSettings.skybox);
+                m.SetColor("_FogCol", newCol);
+                RenderSettings.skybox = m;
+
+                // スタートUIを徐々にけす
+                Color newCol2 = Color.white;
+                newCol2.a = 1.0f - ratio;
+                for (int i = 0;i < images.Length; i++)
+                {
+                    images[i].color = newCol2;
+                }
+                // スポットを点灯させる
+
+                time += Time.deltaTime;
+            }
+            else
+            {
                 // gameをスタートさせる
                 GameManeger.Instance.StartGame();
+                // BGM 再生
+                startImages.SetActive(false);
 
+                Destroy(startObject);
                 // このコンポーネントを消す
                 Destroy(GetComponent<StartPanel>());
             }
+
+
         }
+
+
     }
 }
